@@ -4,10 +4,8 @@ class Abbreviation {
     
     fun abbreviationFromA(a: String, b: String): String {
 
-        var string = a.toUpperCase()
         var pp = ""
-
-        for(arg in string)
+        for(arg in a.toUpperCase())
         {
             for(p in b)
             {
