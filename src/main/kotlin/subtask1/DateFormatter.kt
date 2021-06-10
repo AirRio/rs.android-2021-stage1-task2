@@ -9,6 +9,10 @@ class DateFormatter {
         val dayOfMonth = arrayOf(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
         val monthOfYear = listOf("января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря")
 
+        if(day.toInt() > 31 || month.toInt() > 12)
+            return  "Такого дня не существует"
+
+
         if(month.toInt() == 2)
         {
             if(year.toInt() % 4 == 0)
@@ -18,8 +22,9 @@ class DateFormatter {
         val a = (14 - month.toInt()) / 12
         val y = year.toInt() - a
         val m = month.toInt() + 12 * a - 2
-        val r = ( 7000 + (day.toInt() + y + y / 4 - y / 100 + y / 400 + (31 * m) / 12) ) % 7
+        var r = ( 7000 + (day.toInt() + y + y / 4 - y / 100 + y / 400 + (31 * m) / 12) ) % 7
 
+        if(r == 0) r = 7
         return if(day.toInt() <= dayOfMonth[month.toInt() - 1]) {
             "$day ${monthOfYear[month.toInt() - 1]}, ${dayOfWeek[r-1]}"
         } else
