@@ -4,10 +4,21 @@ class Abbreviation {
     
     fun abbreviationFromA(a: String, b: String): String {
 
-        val string = a.toUpperCase()
-        val result = string.substring(b.length-1)
+        var string = a.toUpperCase()
+        var pp = ""
 
-        return if(result.length == b.length)
+        for(arg in string)
+        {
+            for(p in b)
+            {
+                if(arg == p)
+                {
+                    pp += arg
+                }
+            }
+        }
+
+        return if(pp == b)
             "YES"
         else "NO"
     }
